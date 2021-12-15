@@ -15,11 +15,11 @@ const myWebpage = document.getElementById('my-spotrybefy');
 let ondeEstaAClassTech = document.getElementsByClassName("tech");
 
 function trocaTech (li) {
-   if(firstLi.hasAttribute("class")) {
+    if(firstLi.hasAttribute("class")) {
        firstLi.removeAttribute("class");
-   }
+    }
 
-   if(secondLi.hasAttribute("class")) {
+    if(secondLi.hasAttribute("class")) {
         secondLi.removeAttribute("class");  
     }
 
@@ -37,13 +37,39 @@ thirdLi.addEventListener("click", trocaTech);
 
 // 3. Crie uma função que, ao digitar na caixa de texto, altere o texto do elemento
 // com a classe 'tech';
+function trocarTextoDoTech(texto) {
+    let classeTech = document.getElementsByClassName("tech")[0];
+    let frase = input.value;
+    classeTech.innerHTML=frase;
+}
+
+input.addEventListener("keyup", trocarTextoDoTech);
+
 
 // 4. Crie uma função que, ao clicar duas vezes em 'Meu top 3 do Spotrybefy', ele
 // redirecione para alguma página;
 // 4.1. Que tal redirecionar para seu portifólio?
+function redirecionaPortifolio(doubleClick) {
+    //window.location visto em 'https://www.devmedia.com.br/javascript-redirect-redirecionando-o-usuario-com-window-location/39809'
+    window.location.href = "https://thiagoglady.github.io/"
+}
+
+myWebpage.addEventListener("dblclick", redirecionaPortifolio);
+
 
 // 5. Crie uma função que, ao passar o mouse sobre 'Meu top 3 do Spotrybefy', altere
 // a cor do mesmo;
+function mudarCor(passouMouse) {
+    passouMouse.target.style.backgroundColor = "red";
+}
+
+function tirarCor(passouMouse) {
+    passouMouse.target.removeAttribute("style");
+}
+
+myWebpage.addEventListener("mouseover", mudarCor);
+myWebpage.addEventListener("mouseout", tirarCor);
+
 
 // Segue abaixo um exemplo do uso de event.target:
 
