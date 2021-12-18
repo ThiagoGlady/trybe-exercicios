@@ -112,3 +112,54 @@ function trocarTexto(botaoSexta) {
 }
 
 document.getElementById("btn-friday").addEventListener("click", trocarTexto);
+
+// Exercício 6:
+// Implemente duas funções que criem um efeito de "zoom". Ao passar o ponteiro do mouse em um dia do mês no calendário, o texto desse dia deve aumentar e, quando o ponteiro do mouse sair do dia, o texto deve retornar ao tamanho original.
+// Dica - Propriedade: event.target .
+
+let posicaoDias = document.getElementsByClassName("day");
+
+function bigDay(dia) {
+  dia.target.style.fontSize = "30px";
+}
+
+function smallDay(dia) {
+  dia.target.style.fontSize = "18px";
+}
+
+for(let i = 0; i < posicaoDias.length; i += 1) {
+  posicaoDias[i].addEventListener("mouseover", bigDay);
+  posicaoDias[i].addEventListener("mouseout", smallDay);
+}
+
+// Exercício 7:
+// Implemente uma função que adiciona uma tarefa personalizada ao calendário. A função deve receber como parâmetro a string com o nome da tarefa (ex: "cozinhar") e criar dinamicamente um elemento com a tag <span> contendo a tarefa.
+// O elemento criado deverá ser adicionado como filho/filha da tag <div> que possui a classe "my-tasks" .
+let posicaoTarefa = document.getElementsByClassName("my-tasks")[0];
+
+function tarefaAFazer(tarefa) {
+  let criarTarefa = document.createElement("span");
+  posicaoTarefa.appendChild(criarTarefa);
+  pularLinha = tarefa.target.value + "\n";
+  posicaoTarefa.lastElementChild.innerText = pularLinha;
+}
+
+document.getElementsByTagName("input")[0].addEventListener("change", tarefaAFazer);
+
+// Exercício 8:
+// Implemente uma função que adiciona uma legenda com cor para a tarefa criada no exercício anterior. Esta função deverá receber como parâmetro uma string ("cor") e criar dinamicamente um elemento de tag <div> com a classe task .
+// O parâmetro cor deverá ser utilizado como cor de fundo da <div> criada.
+// O elemento criado deverá ser adicionado como filho/filha da tag <div> que possui a classe "my-tasks" .
+
+function legendaColorida(cor) {
+  let criarLegendaColorida = document.createElement("div");
+  posicaoTarefa.appendChild(criarLegendaColorida);
+  posicaoTarefa.getElementsByTagName("div")[0].setAttribute("class", "task");
+  posicaoTarefa.getElementsByTagName("div")[0].style.backgroundColor  = cor;
+}
+
+legendaColorida("green");
+
+// Exercício 9:
+// Implemente uma função que adiciona um evento que, ao clicar no elemento com a tag <div> referente a cor da sua tarefa, atribua a este elemento a classe task selected , ou seja, quando sua tarefa possuir a classe task selected , ela estará selecionada.
+// Ao clicar novamente no elemento, a sua classe deverá voltar a ser somente task , ou seja, esta tarefa está deixando de ser uma tarefa selecionada.
